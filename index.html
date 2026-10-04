@@ -997,6 +997,59 @@ button{-webkit-appearance:none;appearance:none}
   color:var(--ink);
 }
 
+
+/* v19 timeline geometry: center the rail and every marker on one exact axis. */
+.timeline{
+  position:relative;
+  margin-top:18px;
+  padding-left:37px;
+}
+.timeline:before{
+  left:15px!important;
+  width:2px!important;
+  transform:translateX(-50%);
+}
+.event:before{
+  left:-22px!important;            /* 37px content offset - 22px = x 15px */
+  width:14px!important;
+  height:14px!important;
+  top:4px!important;
+  transform:translateX(-50%);
+  border-width:2px!important;
+}
+.cutoff:before{
+  left:-22px!important;
+}
+
+
+.mastside{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+}
+.officeentry{
+  border:0!important;
+  border-bottom:1px dotted #8f7d68!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--muted)!important;
+  padding:3px 1px!important;
+  font-size:10px!important;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.officeentry:hover,
+.officeentry.on{
+  color:var(--ink)!important;
+  background:transparent!important;
+  border-color:var(--ink)!important;
+}
+@media(max-width:800px){
+  .mastside{align-items:flex-start;margin-top:13px}
+  .mastside .stamp{margin-top:0}
+}
+
 </style>
 </head>
 <body>
@@ -1008,11 +1061,14 @@ button{-webkit-appearance:none;appearance:none}
 Stocked through 2020. Bring numbers, group symbols, decimals, or a half-remembered sequence.
 Strong matches stay on parchment; loose coincidences are pushed into the dark-brown bargain drawer and must confess exactly what matched.</div>
  <div class="auditline">MATH AUDIT · homology/UCT/Künneth checked against Hatcher · 4D claims checked against Manolescu/primary references · knot fingerprints normalized conservatively</div></div>
- <div class="stamp" title="soft opening · finite stock">
-  <span class="stamp-line stamp-top">STOCKED</span>
-  <span class="stamp-line stamp-thru">thru 2020</span>
-  <span class="stamp-line stamp-mid">FINITE COLLECTION</span>
-  <span class="stamp-line stamp-bottom">Not all INSPECTED</span>
+ <div class="mastside">
+  <div class="stamp" title="soft opening · finite stock">
+   <span class="stamp-line stamp-top">STOCKED</span>
+   <span class="stamp-line stamp-thru">thru 2020</span>
+   <span class="stamp-line stamp-mid">FINITE COLLECTION</span>
+   <span class="stamp-line stamp-bottom">Not all INSPECTED</span>
+  </div>
+  <button class="tab officeentry" data-view="office">OFFICE →</button>
  </div>
 </div>
 
@@ -1021,7 +1077,6 @@ Strong matches stay on parchment; loose coincidences are pushed into the dark-br
  <button class="tab" data-view="desk">COUNTER</button>
  <button class="tab" data-view="drawing">EASEL</button>
  <button class="tab" data-view="timeline">TIMELINE</button>
- <button class="tab" data-view="office">OFFICE</button>
 </div>
 <div class="panel" style="padding:12px 15px;margin-top:10px">
  <div class="levelbar" style="margin:0;padding:0;border:0">
