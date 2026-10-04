@@ -1050,6 +1050,48 @@ button{-webkit-appearance:none;appearance:none}
   .mastside .stamp{margin-top:0}
 }
 
+
+/* v20 mobile Counter: suppress platform-blue button text in embedded webviews. */
+#view-desk button{
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-text-fill-color:currentColor;
+}
+#view-desk .microexample,
+#view-desk .matrixblock,
+#view-desk .counterpick,
+#view-desk .deskroute,
+#view-desk .currentaction,
+#view-desk .toolbtn,
+#view-desk .mini-go,
+#view-desk .objremove{
+  color:var(--ink);
+}
+#view-desk .counterpick span,
+#view-desk .deskroute span{
+  color:var(--muted);
+}
+#view-desk .deskgo,
+#view-desk .counteraction.primary,
+#view-desk .pill.on{
+  color:#fff8eb!important;
+  -webkit-text-fill-color:#fff8eb!important;
+}
+#view-desk input,
+#view-desk select,
+#view-desk textarea{
+  color:var(--ink);
+  -webkit-text-fill-color:var(--ink);
+}
+@media(max-width:650px){
+  #view-desk button{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+  }
+  #piinput{
+    font-size:16px!important; /* also prevents iOS focus-zoom */
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1218,7 +1260,7 @@ Strong matches stay on parchment; loose coincidences are pushed into the dark-br
   <div id="homotopyCurrent" class="currentstrip"></div>
   <div class="deskrule"></div>
   <div class="deskcontrols">
-   <input id="piinput" value="pi3(S2)" aria-label="homotopy lookup">
+   <input id="piinput" name="homotopy-query" value="pi3(S2)" aria-label="homotopy lookup" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" inputmode="text" data-form-type="other" data-lpignore="true" data-1p-ignore="true">
    <button id="picheck" class="deskgo">look up</button>
   </div>
   <div class="small" style="margin-top:7px">Tap an example to load it:</div>
@@ -3082,7 +3124,7 @@ function populateKnotDesk(){
 populateKnotDesk();
 $("#homologyDeskGo").onclick=inspectHomologyDesk;
 $("#picheck").onclick=()=>occupiedDesk==="homotopyDesk"?inspectOccupiedHomotopy():computePi();
-$$("[data-pi]").forEach(b=>b.onclick=()=>{occupiedDesk=null;syncSpecialistDesks();$("#piinput").value=b.dataset.pi;$("#piinput").focus()});
+$$("[data-pi]").forEach(b=>b.onclick=()=>{occupiedDesk=null;syncSpecialistDesks();$("#piinput").value=b.dataset.pi;clearIfExists("pioutput")});
 $("#knotpolygo").onclick=()=>occupiedDesk==="knotDesk"?inspectOccupiedKnot():inspectKnotPoly();
 $("#formcheck").onclick=()=>occupiedDesk==="formDesk"?inspectOccupiedForm():computeKnownForm();
 $$(".matrixblock").forEach(b=>b.onclick=()=>{formBlocks.push(b.dataset.block);renderBlocks();clearIfExists("blockoutput");clearIfExists("formoutput")});
