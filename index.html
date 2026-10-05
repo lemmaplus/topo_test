@@ -1051,38 +1051,78 @@ button{-webkit-appearance:none;appearance:none}
 }
 
 
-/* v20 mobile Counter: suppress platform-blue button text in embedded webviews. */
+/* v21 mobile Counter: normalize iOS/WebView button text without flattening the shop palette. */
 #view-desk button{
   -webkit-appearance:none;
   appearance:none;
+  color:var(--ink);
   -webkit-text-fill-color:currentColor;
 }
+
+/* Ordinary Counter controls should never fall back to iOS link-blue. */
 #view-desk .microexample,
 #view-desk .matrixblock,
 #view-desk .counterpick,
 #view-desk .deskroute,
 #view-desk .currentaction,
+#view-desk .counteraction,
 #view-desk .toolbtn,
-#view-desk .mini-go,
-#view-desk .objremove{
+#view-desk .mini-go{
   color:var(--ink);
 }
+
+/* Keep the quieter / intentionally tinted controls intentional. */
+#view-desk .cleardesk{
+  color:var(--muted);
+}
+#view-desk .objremove{
+  color:#936a56;
+}
+#view-desk .formloadbtn{
+  color:#45513f;
+}
+#view-desk .toolbtn{
+  color:#42503d;
+}
+#view-desk .toolbtn.draw{
+  color:#784d3b;
+}
+#view-desk .toolbtn.pi{
+  color:#425767;
+}
+#view-desk .counteraction.deep{
+  color:#5c5262;
+}
+#view-desk .currentaction.deep{
+  color:#5e5066;
+}
+#view-desk .deskroute.sliceedge{
+  color:#5c3d31!important;
+}
+#view-desk .deskroute.sliceedge b{
+  color:#8f4d37!important;
+}
+
 #view-desk .counterpick span,
 #view-desk .deskroute span{
   color:var(--muted);
 }
+
+/* Dark active buttons keep their warm off-white text. */
 #view-desk .deskgo,
 #view-desk .counteraction.primary,
 #view-desk .pill.on{
   color:#fff8eb!important;
   -webkit-text-fill-color:#fff8eb!important;
 }
+
 #view-desk input,
 #view-desk select,
 #view-desk textarea{
   color:var(--ink);
   -webkit-text-fill-color:var(--ink);
 }
+
 @media(max-width:650px){
   #view-desk button{
     -webkit-tap-highlight-color:rgba(0,0,0,0);
